@@ -1,0 +1,28 @@
+name: 'polymer_dart_starter_kit_light'
+version: 0.1.1
+description: A non official Dart clone of polymer starter kit light 1.1.1.
+author: ntaoo <ntaoo.g@gmail.com>
+homepage:
+
+environment:
+  sdk: '>=1.9.0 <2.0.0'
+
+dependencies:
+  browser: ^0.10.0
+  polymer_elements: ^1.0.0-rc.3
+  polymer: ^1.0.0-rc.6
+  reflectable: ^0.3.3
+  web_components: ^0.12.0+3
+  route_hierarchical: any
+
+transformers:
+- web_components:
+    entry_points: web/index.html
+- reflectable:
+    entry_points: web/index.bootstrap.initialize.dart
+- $dart2js:
+    $include: '**/*.bootstrap.initialize.dart'
+    minify: true
+    commandLineOptions:
+    - --trust-type-annotations
+    - --trust-primitives
