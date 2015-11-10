@@ -27,7 +27,7 @@ import 'package:polymer_elements/paper_styles_classes.dart';
 import 'package:polymer_elements/paper_toast.dart';
 import 'package:polymer_elements/paper_toolbar.dart';
 
-/// Seems no platinum-elements' support yet?
+/// Seems no platinum-elements' support yet.
 // Uncomment next block to enable Service Worker Support (2/2)
 //<!--
 //<link rel="import" href="../bower_components/platinum-sw/platinum-sw-cache.html">
@@ -40,7 +40,6 @@ import 'elements/my_list/my_list.dart';
 
 @PolymerRegister('main-app')
 class MainApp extends PolymerElement with AppRouter {
-  /// Constructor used to create instance of MainApp.
   MainApp.created() : super.created();
 
   // Close drawer after menu item is selected if drawerPanel is narrow

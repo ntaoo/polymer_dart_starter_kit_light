@@ -5,7 +5,8 @@ PolymerDart Starter Kit Light
 
 # Motivation
 
-Practice PolymerDart1.0 (Note: It's still 1.0.0rc6).
+Quick start PolymerDart1.0 as well as PolymerJS.
+(Note: It's still 1.0.0rc6).
 
 # App Router
 

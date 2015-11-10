@@ -1,7 +1,7 @@
-name: 'polymer_dart_starter_kit_light'
-version: 0.1.1
-description: A non official Dart clone of polymer starter kit light 1.1.1.
-author: ntaoo <ntaoo.g@gmail.com>
+name: 'your_app'
+version: 0.0.0
+description: Your App description.
+author: Your Name <your-name@example.com>
 homepage:
 
 environment:

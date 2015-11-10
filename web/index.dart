@@ -1,8 +1,8 @@
-library polymer_dart_starter_kit_light.web.index;
+library your_app.web.index;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'package:polymer_dart_starter_kit_light/main_app.dart';
+import 'package:your_app/main_app.dart';
 
 /// [MainApp] used!
 main() async {
