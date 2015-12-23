@@ -1,12 +1,11 @@
 PolymerDart Starter Kit Light
 =============================
 
-**Non official** Polymer Starter Kit Light(1.1.1) Dart Clone.
+**Private** Polymer Starter Kit Light(1.2.1) Dart Clone.
 
 # Motivation
 
 Quick start PolymerDart1.0 as well as PolymerJS.
-(Note: It's still 1.0.0rc6).
 
 # App Router
 

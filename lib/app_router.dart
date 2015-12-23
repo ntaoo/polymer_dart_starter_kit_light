@@ -7,6 +7,7 @@ library app_router;
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:route_hierarchical/client.dart';
+import 'package:your_app/main_app.dart';
 
 @behavior
 abstract class AppRouter {
@@ -40,14 +41,11 @@ abstract class AppRouter {
   }
 
   // Generic function on route enter.
-  static void handleRoute(RouteEvent e, AppRouter instance) {
-    instance.setParams(e.parameters);
-    instance.setRoute(e.route.name);
-    scrollPageToTop();
-  }
-
-  // Scroll page to top and expand header
-  static void scrollPageToTop() {
-    document.querySelector('#mainContainer').scrollTop = 0;
+  static void handleRoute(RouteEvent e, MainApp instance) {
+    instance
+      ..scrollPageToTop()
+      ..closeDrawer()
+      ..setParams(e.parameters)
+      ..setRoute(e.route.name);
   }
 }
