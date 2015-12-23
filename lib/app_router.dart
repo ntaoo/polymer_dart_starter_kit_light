@@ -4,7 +4,6 @@
 
 library app_router;
 
-import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:route_hierarchical/client.dart';
 import 'package:your_app/main_app.dart';
@@ -12,12 +11,9 @@ import 'package:your_app/main_app.dart';
 @behavior
 abstract class AppRouter {
   @property String route = '';
-  @reflectable setRoute(String route) => set('route', route);
-
   @property Map params = {};
-  @reflectable setParams(Map params) => set('params', params);
 
-  static created(instance) {
+  static created(MainApp instance) {
     var router = new Router();
     router.root
       ..addRoute(
@@ -45,7 +41,7 @@ abstract class AppRouter {
     instance
       ..scrollPageToTop()
       ..closeDrawer()
-      ..setParams(e.parameters)
-      ..setRoute(e.route.name);
+      ..set('route', e.route.name)
+      ..set('params', e.parameters);
   }
 }
