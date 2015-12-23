@@ -11,11 +11,6 @@ Quick start PolymerDart1.0 as well as PolymerJS.
 
 Original Polymer Starter Kit Light uses [page.js]. For Dart, here I use route_hierarchical package. And define AppRouter as Polymer Behavior and mix into the MainApp.
 
-
-# TODO
-
-* service worker stuff.
-
 # Refs:
 
 <https://pub.dartlang.org/packages/polymer>
