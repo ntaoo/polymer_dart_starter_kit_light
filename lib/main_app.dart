@@ -27,13 +27,6 @@ import 'package:polymer_elements/paper_styles_classes.dart';
 import 'package:polymer_elements/paper_toast.dart';
 import 'package:polymer_elements/paper_toolbar.dart';
 
-/// Seems no platinum-elements' support yet.
-// Uncomment next block to enable Service Worker Support (2/2)
-//<!--
-//<link rel="import" href="../bower_components/platinum-sw/platinum-sw-cache.html">
-//<link rel="import" href="../bower_components/platinum-sw/platinum-sw-register.html">
-//-->
-
 import 'app_router.dart';
 import 'elements/my_greeting/my_greeting.dart';
 import 'elements/my_list/my_list.dart';
@@ -41,15 +34,6 @@ import 'elements/my_list/my_list.dart';
 @PolymerRegister('main-app')
 class MainApp extends PolymerElement with AppRouter {
   MainApp.created() : super.created();
-
-  // Close drawer after menu item is selected if drawerPanel is narrow
-  @reflectable
-  void onDataRouteClick(Event event, [_]) {
-    var drawerPanel = querySelector('#paperDrawerPanel');
-    if (drawerPanel.narrow) {
-      drawerPanel.closeDrawer();
-    }
-  }
 
   // Main area's paper-scroll-header-panel custom condensing transformation of
   // the appName in the middle-container and the bottom title in the bottom-container.
@@ -63,23 +47,32 @@ class MainApp extends PolymerElement with AppRouter {
         Polymer.dom(this.root).querySelector('#mainToolbar .middle-container');
     var bottomContainer =
         Polymer.dom(this.root).querySelector('#mainToolbar .bottom-container');
-    num y = detail['y'];
-    if (y == null) y = 0;
+    num y = detail['y'] == null ? 0 : detail['y'];
     num heightDiff = detail['height'] - detail['condensedHeight'];
     num yRatio = min(1, y / heightDiff);
     // appName max size when condensed. The smaller the number the smaller the condensed size.
     num maxMiddleScale = 0.50;
-    num scaleMiddle = max(
-        maxMiddleScale,
-        (heightDiff - y) / (heightDiff / (1 - maxMiddleScale)) +
-            maxMiddleScale);
+    num auxHeight = heightDiff - y;
+    num auxScale = heightDiff / (1 - maxMiddleScale);
+    num scaleMiddle = max(maxMiddleScale, auxHeight / auxScale + maxMiddleScale);
     num scaleBottom = 1 - yRatio;
+
+    /// transform() is the polymer-interop's helper function for Polymer.Base.transform in JS.
     // Move/translate middleContainer
     transform('translate3d(0, ${yRatio * 100}%, 0)', middleContainer);
     // Scale bottomContainer and bottom sub title to nothing and back
     transform('scale($scaleBottom) translateZ(0)', bottomContainer);
     // Scale middleContainer appName
     transform('scale($scaleMiddle) translateZ(0)', appName);
+  }
+
+  // Scroll page to top and expand header
+  void scrollPageToTop() {
+    (this.$['headerPanelMain'] as PaperScrollHeaderPanel).scrollToTop(true);
+  }
+
+  void closeDrawer() {
+    (this.$['paperDrawerPanel'] as PaperDrawerPanel).closeDrawer();
   }
 
   // Optional lifecycle methods - uncomment if needed.

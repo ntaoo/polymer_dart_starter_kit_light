@@ -67,27 +67,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background: white;
       }
 
+      paper-menu {
+        --paper-menu-selected-item: {
+          color: var(--primary-color);
+        }
+
+        --paper-menu-focused-item-after: {
+          background: var(--primary-color);
+        }
+      }
+
       paper-menu iron-icon {
         margin-right: 33px;
         opacity: 0.54;
       }
 
-      .paper-menu > .iron-selected {
-        color: var(--default-primary-color);
-      }
 
       paper-menu a {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
         text-decoration: none;
         color: var(--menu-link-color);
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-direction: row;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
         font-family: 'Roboto', 'Noto', sans-serif;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
