@@ -1,4 +1,4 @@
-library your_app.web.index;
+library your_app.web.main;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';
